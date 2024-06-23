@@ -1,5 +1,6 @@
 import {forecast, today} from './fetch'
 import { map } from './create-map';
+import { loadingAnimationOn, loadingAnimationOff } from './aditional-functions';
 
 let temp = [];
 let wind = [];
@@ -88,12 +89,14 @@ function createTopBar(i) {
 }
 
 function createDOM(i) {
+    loadingAnimationOn();
     clearDOM();
     map();
     createCharts(i);
     // createHours(i);
     createMain(i);
     createTopBar(i);
+    loadingAnimationOff();
 }
 
 function clearDOM() {
@@ -117,26 +120,32 @@ document.querySelector("img.previous-day-btn").addEventListener("click", () => {
 function nextDay(day) {
 
     if (day == 0) {
+        loadingAnimationOn();
         clearDOM();
         createCharts(1);
         // createHours(1);
         createMain(1);
         createTopBar(1);
         currentDay = 1;
+        loadingAnimationOff();
     } else if (day == 1 ) {
+        loadingAnimationOn();
         clearDOM();
         createCharts(2);
         // createHours(2);
         createMain(2);
         createTopBar(2);
         currentDay = 2;
+        loadingAnimationOff();
     } else if (day == 2) {
+        loadingAnimationOn();
         clearDOM();
         createCharts(3);
         // createHours(3);
         createMain(3);
         createTopBar(3);
         currentDay = 3;
+        loadingAnimationOff();
     }
 
 }
@@ -144,26 +153,32 @@ function nextDay(day) {
 function previousDay(day) {
 
     if (day == 3) {
+        loadingAnimationOn();
         clearDOM();
         createCharts(2);
         // createHours(2);
         createMain(2);
         createTopBar(2);
         currentDay = 2;
+        loadingAnimationOff();
     } else if (day == 2 ) {
+        loadingAnimationOn();
         clearDOM();
         createCharts(1);
         // createHours(1);
         createMain(1);
         createTopBar(1);
         currentDay = 1;
+        loadingAnimationOff();
     } else if (day == 1) {
+        loadingAnimationOn();
         clearDOM();
         createCharts(0);
         // createHours(0);
         createMain(0);
         createTopBar(0);
         currentDay = 0;
+        loadingAnimationOff();
     }
 
 }

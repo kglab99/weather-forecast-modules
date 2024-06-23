@@ -26,15 +26,24 @@ function getWeekday(date){
 
 // Loading animation on/off
 function loadingAnimationOn() {
-    // document.querySelector("div.container").style.display = "flex";
-    // document.querySelector("div#weather").style.display = "none";
-    // document.querySelector("div#search").style.display = "none";
+    document.querySelector("div.container").style.display = "flex";
+    document.querySelector("div#search").style.display = "none";
+    document.querySelector("div#menu").style.display = "none";
+    document.querySelector("div#top-bar").style.display = "none";
+    document.querySelector("div#main").style.display = "none";
+    document.querySelector("div#charts").style.display = "none";
+    document.querySelector("div#map").style.display = "none";
 }
 
 function loadingAnimationOff() {
-    // document.querySelector("div.container").style.display = "none";
-    // document.querySelector("div#weather").style.display = "flex";
-    // document.querySelector("div#search").style.display = "flex";
+    document.querySelector("div.container").style.display = "none";
+    document.querySelector("div#search").style.display = "flex";
+    document.querySelector("div#menu").style.display = "flex";
+    document.querySelector("div#top-bar").style.display = "flex";
+    document.querySelector("div#main").style.display = "flex";
+    document.querySelector("div#charts").style.display = "flex";
+    document.querySelector("div#map").style.display = "flex";
+
 }
 
 // Error display
