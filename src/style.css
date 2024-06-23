@@ -8,6 +8,8 @@ body {
     align-items: center;
 
     font-family: "Sen", sans-serif;
+    width: 90vw;
+    margin: 2vh auto 0 auto;
 }
 
 div#charts {
@@ -164,3 +166,15 @@ div#menu {
         height: 18px;
     }
 }
+
+#map {
+    display: flex;
+    /* position: absolute; */
+    /* top: 0; */
+    /* bottom: 0; */
+    /* height: 20vh; */
+    /* width: 20vw; */
+    border-radius: 10px;
+    align-self: flex-end;
+
+  }

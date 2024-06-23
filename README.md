@@ -1,11 +1,5 @@
 
-
-
 ### live preview [preview](https://kglab99.github.io/weather-forecast-modules/)
-
-
-
-
 
 
 # 🚀 Welcome to your new awesome project!

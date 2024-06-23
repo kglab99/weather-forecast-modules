@@ -1,4 +1,5 @@
 import {forecast, today} from './fetch'
+import { map } from './create-map';
 
 let temp = [];
 let wind = [];
@@ -88,13 +89,15 @@ function createTopBar(i) {
 
 function createDOM(i) {
     clearDOM();
+    map();
     createCharts(i);
-    createHours(i);
+    // createHours(i);
     createMain(i);
     createTopBar(i);
 }
 
 function clearDOM() {
+    // document.querySelector("div#map").innerHTML = "";
     document.querySelector("div#top-bar").innerHTML = "";
     document.querySelector("div#main").innerHTML = "";
     document.querySelector("div#hours").innerHTML = "";
@@ -116,21 +119,21 @@ function nextDay(day) {
     if (day == 0) {
         clearDOM();
         createCharts(1);
-        createHours(1);
+        // createHours(1);
         createMain(1);
         createTopBar(1);
         currentDay = 1;
     } else if (day == 1 ) {
         clearDOM();
         createCharts(2);
-        createHours(2);
+        // createHours(2);
         createMain(2);
         createTopBar(2);
         currentDay = 2;
     } else if (day == 2) {
         clearDOM();
         createCharts(3);
-        createHours(3);
+        // createHours(3);
         createMain(3);
         createTopBar(3);
         currentDay = 3;
@@ -143,21 +146,21 @@ function previousDay(day) {
     if (day == 3) {
         clearDOM();
         createCharts(2);
-        createHours(2);
+        // createHours(2);
         createMain(2);
         createTopBar(2);
         currentDay = 2;
     } else if (day == 2 ) {
         clearDOM();
         createCharts(1);
-        createHours(1);
+        // createHours(1);
         createMain(1);
         createTopBar(1);
         currentDay = 1;
     } else if (day == 1) {
         clearDOM();
         createCharts(0);
-        createHours(0);
+        // createHours(0);
         createMain(0);
         createTopBar(0);
         currentDay = 0;

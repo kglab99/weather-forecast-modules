@@ -1,11 +1,13 @@
 import * as css from "./style.css";
-import { getLocation, searchLocation  } from './fetch'
+import { getLocation, searchLocation, forecast  } from './fetch'
 import { createCharts } from './create-DOM'
 import { hidePrompt, displayError, loadingAnimationOn, loadingAnimationOff, getWeekday, normalizeString} from './aditional-functions'
 import Chartkick from "chartkick"
 import "chartkick/chart.js"
 import forward from '../assets/forward.svg';
 import back from '../assets/back.svg'
+
+
 
 document.querySelector("img.next-day-btn").src = forward;
 document.querySelector("img.previous-day-btn").src = back;
@@ -21,8 +23,6 @@ document.addEventListener('keypress', function (e) {
 
     }
 })
-
-
 
 
 // Additional functions

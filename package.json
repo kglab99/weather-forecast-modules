@@ -1,7 +1,9 @@
 {
   "dependencies": {
     "chart.js": "^4.4.3",
-    "chartkick": "^5.0.1"
+    "chartkick": "^5.0.1",
+    "mapbox-gl": "^3.4.0",
+    "ol": "^9.2.4"
   },
   "devDependencies": {
     "@webpack-cli/generators": "^3.0.7",
