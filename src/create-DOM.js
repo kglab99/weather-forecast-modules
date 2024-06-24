@@ -4,7 +4,7 @@ import { loadingAnimationOn, loadingAnimationOff } from './loading-animation';
 import Chartkick from "chartkick"
 import "chartkick/chart.js"
 import { createUV } from './progress-bar';
-
+import {moonphaseImg} from './moonphase'
 // Main function to create all DOM elements
 function createDOM(i) {
     loadingAnimationOn();
@@ -14,6 +14,7 @@ function createDOM(i) {
     createMain(i);
     createTopBar(i);
     createUV(i);
+    moonphaseImg(i);
     loadingAnimationOff();
 }
 

@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "chartkick": "^5.0.1",
+    "lunarphase-js": "^2.0.3",
     "mapbox-gl": "^3.4.0",
     "ol": "^9.2.4",
     "progressbar.js": "^1.1.1"

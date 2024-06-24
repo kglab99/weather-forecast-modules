@@ -227,7 +227,7 @@ div#menu {
 }
 
 div#UV-container {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   margin-bottom: 1em;
@@ -241,6 +241,12 @@ div#UV-container {
       width: 200px;
       height: 100px;
   }
+}
+
+div#moonphase {
+  display: none;
+  flex-direction: column;
+  
 }
 
 
