@@ -63,11 +63,34 @@ function createMain(i) {
     h1.classList = "current-temp";
     h1.textContent = `${forecast.forecast.forecastday[i].day.avgtemp_c}°C`;
 
+    const divTemp = document.createElement("div");
+    divTemp.classList = "min-max-temp";
+    
+    const minTemp = document.createElement("div");
+    minTemp.classList = "min-temp";
+
+    const pMinTemp = document.createElement("p");
+    pMinTemp.classList = "min-temp";
+    pMinTemp.textContent = `${forecast.forecast.forecastday[i].day.mintemp_c}°C`;
+
+    const maxTemp = document.createElement("div");
+    maxTemp.classList = "max-temp";
+
+    const pMaxTemp = document.createElement("p");
+    pMaxTemp.classList = "max-temp";
+    pMaxTemp.textContent = `${forecast.forecast.forecastday[i].day.maxtemp_c}°C`
+
+    minTemp.appendChild(pMinTemp);
+    maxTemp.appendChild(pMaxTemp);
+
+    divTemp.append(minTemp, maxTemp);
+
+
     const condition = document.createElement("p");
     condition.classList = "current-condition";
     condition.textContent = forecast.forecast.forecastday[i].day.condition.text;
 
-    main.append(h1, condition);
+    main.append(h1, divTemp, condition);
 }
 
 // Create top bar

@@ -21,7 +21,7 @@ body {
 }
 
 div#charts {
-    width: 70vw;
+    /* width: 70vw; */
     display: none;
     flex-direction: column;
     gap: 32px;
@@ -33,8 +33,8 @@ div#charts {
     }
 
     div.chart {
-        width: 400px;
-        height: 300px;
+        width: 30vw;
+        height: 30vh;
     }
 
     div#wind {
@@ -59,20 +59,36 @@ div#charts {
     h2 {
         margin-left: 1em;
         margin-bottom: 0;
+        margin-top: -20px;
         font-size: 1.2em;
     }
 
-    div#windy {
-        margin-left: 25px;
-        width: 400px;
-        height: 300px;
-        border-radius: 10px;
-        display: none;
-        border-radius: 10px;
-        /* align-self: flex-end; */
-    }
+
 }
 
+div#map {
+  display: flex;
+  width: 30vw;
+}
+
+div#windy {
+  margin-left: 25px;
+  width: 30vw;
+  height: 30vh;
+  border-radius: 10px;
+  display: none;
+  border-radius: 10px;
+  /* align-self: flex-end; */
+}
+
+div#bottom {
+  border-top: 1px solid black;
+  padding: 3em;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 70vw;
+}
 
 
 div#hours {
@@ -285,6 +301,12 @@ div#moonphase {
   
 }
 
+div.min-max-temp {
+  display: flex;
+  justify-content: space-between;
+
+  width: 20vw;
+}
 
 
   /* Loading animation */
