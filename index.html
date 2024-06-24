@@ -6,7 +6,8 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap" rel="stylesheet">
-        <link href='https://api.mapbox.com/mapbox-gl-js/v3.4.0/mapbox-gl.css' rel='stylesheet' />
+        <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+        <script src="https://api.windy.com/assets/map-forecast/libBoot.js"></script>
     </head>
     <body>
         <div class="container">
@@ -39,12 +40,22 @@
         <div id="top-bar"></div>
         <div id="main"></div>
         <div id="charts">
-            <div id="temperature" class="chart"></div>
-            <div id="wind" class="chart"></div>
-            <div id="rain" class="chart"></div>
+            <span>
+                <h2>Temperature</h2>
+                <div id="temperature" class="chart"></div>
+            </span>
+            <span>
+                <h2>Wind speed</h2>
+                <div id="wind" class="chart"></div>
+            </span>
+            <span>
+                <h2>Chance of rain</h2>
+                <div id="rain" class="chart"></div>
+            </span>
+            <span class="windy">
+                <div id="windy"></div>
+            </span>
         </div>
-        <div id='map' style='width: 400px; height: 300px;'></div>
-
 
             <div id="hours"></div>
     </body>

@@ -1,11 +1,15 @@
 import {forecast, today} from './fetch'
-import { map } from './create-map';
-import { loadingAnimationOn, loadingAnimationOff } from './aditional-functions';
+import { windy } from './create-map';
+import { loadingAnimationOn, loadingAnimationOff } from './loading-animation';
+import Chartkick from "chartkick"
+import "chartkick/chart.js"
+
 
 let temp = [];
 let wind = [];
 let rain = [];
 let condition = [];
+
 
 function createCharts(i) {
     temp = [];
@@ -17,9 +21,9 @@ function createCharts(i) {
         rain.push([element.time.split(' ')[1], element.chance_of_rain]);
     })
 
-    new Chartkick.LineChart("temperature", temp, {ytitle: "Temperature", points: false, loading: "Loading...", suffix: "°C", empty: "No data"});
-    new Chartkick.LineChart("wind", wind, {ytitle: "Wind speed", points: false, loading: "Loading...", suffix: "km/h", empty: "No data"});
-    new Chartkick.LineChart("rain", rain, {ytitle: "Chance of rain", points: false, loading: "Loading...", suffix: "%", empty: "No data"});
+    new Chartkick.LineChart("temperature", temp, {points: false, loading: "Loading...", suffix: "°C", empty: "No data", });
+    new Chartkick.LineChart("wind", wind, {points: false, loading: "Loading...", suffix: "km/h", empty: "No data"});
+    new Chartkick.LineChart("rain", rain, {points: false, loading: "Loading...", suffix: "%", empty: "No data"});
 }
 
 function createHours(i) {
@@ -91,7 +95,8 @@ function createTopBar(i) {
 function createDOM(i) {
     loadingAnimationOn();
     clearDOM();
-    map();
+    // map();
+    windy();
     createCharts(i);
     // createHours(i);
     createMain(i);

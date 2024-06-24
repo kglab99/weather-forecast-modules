@@ -1,4 +1,5 @@
-import { hidePrompt, displayError, loadingAnimationOn, loadingAnimationOff, getWeekday, normalizeString} from './aditional-functions'
+import { hidePrompt, displayError, getWeekday, normalizeString} from './aditional-functions'
+import { loadingAnimationOn, loadingAnimationOff } from './loading-animation';
 import { createDOM } from './create-DOM'
 
 let geolocation;
