@@ -9,6 +9,7 @@ function loadingAnimationOn() {
     document.querySelector("div#windy").style.display = "none";
     document.querySelector("div#UV-container").style.display = "none";
     document.querySelector("div#moonphase").style.display = "none";
+    // document.querySelector("div#moonphase").style.display = "none";
 
 }
 

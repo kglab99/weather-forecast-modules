@@ -13,6 +13,8 @@ function moonphaseImg(i){
     let moonphase = forecast.forecast.forecastday[i].astro.moon_phase;
     let moonImg = document.querySelector("img.moonphase");
     let lat = forecast.location.lat;
+    let p = document.querySelector("p.moonphase");
+    p.textContent = moonphase;
     console.log(lat);
 
     // Show img proper to earth hemisphere of location

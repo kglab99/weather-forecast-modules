@@ -3,7 +3,7 @@ import { windMap } from './create-map';
 import { loadingAnimationOn, loadingAnimationOff } from './loading-animation';
 import Chartkick from "chartkick"
 import "chartkick/chart.js"
-import { createUV } from './progress-bar';
+import { createUV } from './UV-index-chart';
 import {moonphaseImg} from './moonphase'
 import { createSunchart } from './sunrise-graph';
 
@@ -99,7 +99,6 @@ function createTopBar(i) {
 }
 
 // Function for menu allowing changing the day of foreacst
-
 let currentDay = 0;
 
 document.querySelector("img.next-day-btn").addEventListener("click", () => {
@@ -110,9 +109,8 @@ document.querySelector("img.previous-day-btn").addEventListener("click", () => {
     previousDay(currentDay);
 })
 
-
 // I assume this should be done with a loop, but it generated unwanted results so for now its hard coded
-
+// It should also be in another module but caused unexpected results
 // function for appending next day
 function nextDay(day) {
 
@@ -124,6 +122,7 @@ function nextDay(day) {
             createMain(1);
             createTopBar(1);
             createUV(1);
+            createSunchart(1);
             currentDay = 1;
             loadingAnimationOff();
             break;
@@ -134,6 +133,7 @@ function nextDay(day) {
             createMain(2);
             createTopBar(2);
             createUV(2);
+            createSunchart(2);
             currentDay = 2;
             loadingAnimationOff();
             break;
@@ -144,6 +144,7 @@ function nextDay(day) {
             createMain(3);
             createTopBar(3);
             createUV(3);
+            createSunchart(3);
             currentDay = 3;
             loadingAnimationOff();
             break;
@@ -162,6 +163,7 @@ function previousDay(day) {
             createMain(2);
             createTopBar(2);
             createUV(2);
+            createSunchart(2);
             currentDay = 2;
             loadingAnimationOff();
             break;
@@ -172,6 +174,7 @@ function previousDay(day) {
             createMain(1);
             createTopBar(1);
             createUV(1);
+            createSunchart(1);
             currentDay = 1;
             loadingAnimationOff();
             break;
@@ -182,15 +185,18 @@ function previousDay(day) {
             createMain(0);
             createTopBar(0);
             createUV(0);
+            createSunchart(0);
             currentDay = 0;
             loadingAnimationOff();
             break;
     }
 }
 
-
-
 export {
     createCharts,
-    createDOM
+    createDOM,
+    clearDOM,
+    createMain,
+    createTopBar,
+
 }

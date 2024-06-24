@@ -7,6 +7,7 @@ function createSunchart(i) {
     let lat = forecast.location.lat;
     let lon = forecast.location.lon;
     let date = forecast.forecast.forecastday[i].date;
+    console.log(date);
     let data = [];
 
     //Get sunrise sunset time and convert to 24H format
