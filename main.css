@@ -12,6 +12,7 @@ body {
     margin: 3vh auto 3vh auto;
     padding: 0 5vw 4vh 5vw;
 
+    -webkit-backdrop-filter: blur(16px);
     backdrop-filter: blur(16px);
     /* backdrop-filter: drop-shadow(4px 4px 10px blue); */
 
@@ -423,7 +424,7 @@ div#menu {
         }
 
         div.chart {
-            width: 80vw;
+            width: 90vw;
         }
 
         div#windy {
