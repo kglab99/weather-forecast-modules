@@ -3,6 +3,7 @@ import { windMap } from './create-map';
 import { loadingAnimationOn, loadingAnimationOff } from './loading-animation';
 import Chartkick from "chartkick"
 import "chartkick/chart.js"
+import { createUV } from './progress-bar';
 
 // Main function to create all DOM elements
 function createDOM(i) {
@@ -12,6 +13,7 @@ function createDOM(i) {
     createCharts(i);
     createMain(i);
     createTopBar(i);
+    createUV(i);
     loadingAnimationOff();
 }
 
@@ -20,6 +22,7 @@ function clearDOM() {
     document.querySelector("div#top-bar").innerHTML = "";
     document.querySelector("div#main").innerHTML = "";
     document.querySelector("div#hours").innerHTML = "";
+    document.querySelector("div#UV").innerHTML = "";
 }
 
 // Line color for chart line
@@ -115,6 +118,7 @@ function nextDay(day) {
             createCharts(1);
             createMain(1);
             createTopBar(1);
+            createUV(1);
             currentDay = 1;
             loadingAnimationOff();
             break;
@@ -124,6 +128,7 @@ function nextDay(day) {
             createCharts(2);
             createMain(2);
             createTopBar(2);
+            createUV(2);
             currentDay = 2;
             loadingAnimationOff();
             break;
@@ -133,6 +138,7 @@ function nextDay(day) {
             createCharts(3);
             createMain(3);
             createTopBar(3);
+            createUV(3);
             currentDay = 3;
             loadingAnimationOff();
             break;
@@ -150,6 +156,7 @@ function previousDay(day) {
             createCharts(2);
             createMain(2);
             createTopBar(2);
+            createUV(2);
             currentDay = 2;
             loadingAnimationOff();
             break;
@@ -159,6 +166,7 @@ function previousDay(day) {
             createCharts(1);
             createMain(1);
             createTopBar(1);
+            createUV(1);
             currentDay = 1;
             loadingAnimationOff();
             break;
@@ -168,6 +176,7 @@ function previousDay(day) {
             createCharts(0);
             createMain(0);
             createTopBar(0);
+            createUV(0);
             currentDay = 0;
             loadingAnimationOff();
             break;

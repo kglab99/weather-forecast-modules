@@ -104,7 +104,6 @@ function getOnSearchAndAppendDOM () {
             .then(function(result) {
                 if (result != "error") {
                     forecast = result;
-                    today = getWeekday(forecast.location.localtime.split(' ')[0]);
                     longitude =  forecast.location.lon;
                     latitude = forecast.location.lat;
                     createDOM(0);

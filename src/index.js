@@ -20,6 +20,7 @@ document.addEventListener('keypress', function (e) {
 
 
 
+
 // Icon srcs
 document.querySelector("img.next-day-btn").src = forward;
 document.querySelector("img.previous-day-btn").src = back;
