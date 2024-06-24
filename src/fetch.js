@@ -18,6 +18,7 @@ function searchLocation() {
     if (city != "") {
         loadingAnimationOn();
         getOnSearch();
+        loadingAnimationOff();
         document.querySelector("input.search").value = "";
     } else {
         document.querySelector("input.search").placeholder = "Type to search";
@@ -121,6 +122,8 @@ function getOnSearch () {
                     loadingAnimationOff();
                 } else {
                     displayError();
+                    loadingAnimationOff();
+
                 }
 
                     
