@@ -5,6 +5,8 @@ import Chartkick from "chartkick"
 import "chartkick/chart.js"
 import { createUV } from './progress-bar';
 import {moonphaseImg} from './moonphase'
+import { createSunchart } from './sunrise-graph';
+
 // Main function to create all DOM elements
 function createDOM(i) {
     loadingAnimationOn();
@@ -14,6 +16,7 @@ function createDOM(i) {
     createMain(i);
     createTopBar(i);
     createUV(i);
+    createSunchart(i);
     moonphaseImg(i);
     loadingAnimationOff();
 }
@@ -46,6 +49,7 @@ function createCharts(i) {
     })
 
     // Create charts from arrays
+
     new Chartkick.LineChart("temperature", temp, {points: false, loading: "Loading...", suffix: "°C", empty: "No data", });
     new Chartkick.LineChart("wind", wind, {points: false, loading: "Loading...", suffix: "km/h", empty: "No data"});
     new Chartkick.LineChart("rain", rain, {points: false, loading: "Loading...", suffix: "%", empty: "No data"});
