@@ -1,57 +1,53 @@
-import {forecast, today} from './fetch'
-import { windy } from './create-map';
+import {forecast} from './fetch'
+import { windMap } from './create-map';
 import { loadingAnimationOn, loadingAnimationOff } from './loading-animation';
 import Chartkick from "chartkick"
 import "chartkick/chart.js"
 
+// Main function to create all DOM elements
+function createDOM(i) {
+    loadingAnimationOn();
+    clearDOM();
+    windMap();
+    createCharts(i);
+    createMain(i);
+    createTopBar(i);
+    loadingAnimationOff();
+}
 
-let temp = [];
-let wind = [];
-let rain = [];
-let condition = [];
+// Clear DOM before creating DOM for another day or changing location
+function clearDOM() {
+    document.querySelector("div#top-bar").innerHTML = "";
+    document.querySelector("div#main").innerHTML = "";
+    document.querySelector("div#hours").innerHTML = "";
+}
 
+// Line color for chart line
+Chartkick.options = {
+    colors: ["#000000"]
+}
 
+// Create charts with hourly forecast
 function createCharts(i) {
-    temp = [];
-    wind = [];
-    rain = [];
+    // Declare variables for charts data
+    let temp = [];
+    let wind = [];
+    let rain = [];
+
+    // Create arrays with current data in format readable by Chartkick
     forecast.forecast.forecastday[i].hour.forEach((element) => {
         temp.push([element.time.split(' ')[1], element.temp_c]);
         wind.push([element.time.split(' ')[1], element.wind_kph]);
         rain.push([element.time.split(' ')[1], element.chance_of_rain]);
     })
 
+    // Create charts from arrays
     new Chartkick.LineChart("temperature", temp, {points: false, loading: "Loading...", suffix: "°C", empty: "No data", });
     new Chartkick.LineChart("wind", wind, {points: false, loading: "Loading...", suffix: "km/h", empty: "No data"});
     new Chartkick.LineChart("rain", rain, {points: false, loading: "Loading...", suffix: "%", empty: "No data"});
 }
 
-function createHours(i) {
-    condition = [];
-    forecast.forecast.forecastday[i].hour.forEach((element) => {
-        condition.push([element.time.split(' ')[1], element.condition.text, element.condition.icon]);
-    })
-
-    let hoursBody = document.querySelector("div#hours");
-
-    condition.forEach((element) => {
-        const div = document.createElement("div");
-        div.classList = "hour";
-
-        const p = document.createElement("p");
-        p.classList = "hour-time";
-        p.textContent = element[0];
-
-        const img = document.createElement("img");
-        img.classList = "hour-condition";
-        img.src = element[2];
-
-        div.appendChild(p);
-        div.appendChild(img);
-        hoursBody.appendChild(div);
-    })
-}
-
+// Create main weather section
 function createMain(i) {
     const main = document.querySelector("div#main");
 
@@ -66,6 +62,7 @@ function createMain(i) {
     main.append(h1, condition);
 }
 
+// Create top bar
 function createTopBar(i) {
     const topBar = document.querySelector("div#top-bar");
 
@@ -79,6 +76,7 @@ function createTopBar(i) {
 
     const day = document.querySelector("p.day");
 
+    // Assign text value based on current day, today = today, other days = day name
     if (i != 0) {
         const newDay = new Date(forecast.forecast.forecastday[i].date);
         const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -92,25 +90,7 @@ function createTopBar(i) {
     topBar.append(city, date);
 }
 
-function createDOM(i) {
-    loadingAnimationOn();
-    clearDOM();
-    // map();
-    windy();
-    createCharts(i);
-    // createHours(i);
-    createMain(i);
-    createTopBar(i);
-    loadingAnimationOff();
-}
-
-function clearDOM() {
-    // document.querySelector("div#map").innerHTML = "";
-    document.querySelector("div#top-bar").innerHTML = "";
-    document.querySelector("div#main").innerHTML = "";
-    document.querySelector("div#hours").innerHTML = "";
-}
-
+// Function for menu allowing changing the day of foreacst
 
 let currentDay = 0;
 
@@ -122,76 +102,81 @@ document.querySelector("img.previous-day-btn").addEventListener("click", () => {
     previousDay(currentDay);
 })
 
+
+// I assume this should be done with a loop, but it generated unwanted results so for now its hard coded
+
+// function for appending next day
 function nextDay(day) {
 
-    if (day == 0) {
-        loadingAnimationOn();
-        clearDOM();
-        createCharts(1);
-        // createHours(1);
-        createMain(1);
-        createTopBar(1);
-        currentDay = 1;
-        loadingAnimationOff();
-    } else if (day == 1 ) {
-        loadingAnimationOn();
-        clearDOM();
-        createCharts(2);
-        // createHours(2);
-        createMain(2);
-        createTopBar(2);
-        currentDay = 2;
-        loadingAnimationOff();
-    } else if (day == 2) {
-        loadingAnimationOn();
-        clearDOM();
-        createCharts(3);
-        // createHours(3);
-        createMain(3);
-        createTopBar(3);
-        currentDay = 3;
-        loadingAnimationOff();
+    switch (day) {
+        case 0:
+            loadingAnimationOn();
+            clearDOM();
+            createCharts(1);
+            createMain(1);
+            createTopBar(1);
+            currentDay = 1;
+            loadingAnimationOff();
+            break;
+        case 1:
+            loadingAnimationOn();
+            clearDOM();
+            createCharts(2);
+            createMain(2);
+            createTopBar(2);
+            currentDay = 2;
+            loadingAnimationOff();
+            break;
+        case 2:
+            loadingAnimationOn();
+            clearDOM();
+            createCharts(3);
+            createMain(3);
+            createTopBar(3);
+            currentDay = 3;
+            loadingAnimationOff();
+            break;
     }
 
 }
 
+// function for appending previous day
 function previousDay(day) {
 
-    if (day == 3) {
-        loadingAnimationOn();
-        clearDOM();
-        createCharts(2);
-        // createHours(2);
-        createMain(2);
-        createTopBar(2);
-        currentDay = 2;
-        loadingAnimationOff();
-    } else if (day == 2 ) {
-        loadingAnimationOn();
-        clearDOM();
-        createCharts(1);
-        // createHours(1);
-        createMain(1);
-        createTopBar(1);
-        currentDay = 1;
-        loadingAnimationOff();
-    } else if (day == 1) {
-        loadingAnimationOn();
-        clearDOM();
-        createCharts(0);
-        // createHours(0);
-        createMain(0);
-        createTopBar(0);
-        currentDay = 0;
-        loadingAnimationOff();
+    switch (day) {
+        case 3:
+            loadingAnimationOn();
+            clearDOM();
+            createCharts(2);
+            createMain(2);
+            createTopBar(2);
+            currentDay = 2;
+            loadingAnimationOff();
+            break;
+        case 2:
+            loadingAnimationOn();
+            clearDOM();
+            createCharts(1);
+            createMain(1);
+            createTopBar(1);
+            currentDay = 1;
+            loadingAnimationOff();
+            break;
+        case 1:
+            loadingAnimationOn();
+            clearDOM();
+            createCharts(0);
+            createMain(0);
+            createTopBar(0);
+            currentDay = 0;
+            loadingAnimationOff();
+            break;
     }
-
 }
 
 
 
 export {
     createCharts,
-    createHours,
     createDOM
 }

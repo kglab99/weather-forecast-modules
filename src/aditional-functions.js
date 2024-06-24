@@ -24,7 +24,7 @@ function getWeekday(date){
     return weekday[day];
 }
 
-// Error display
+// Display error when API doesnt return forecast, eg. when user searches for non existent city
 function displayError() {
     const body = document.querySelector("body");
     const errorMessage = document.createElement("h1");
@@ -32,13 +32,7 @@ function displayError() {
     body.insertAdjacentElement("afterbegin",errorMessage);
 }
 
-// Hide geolocaiton prompt
-function hidePrompt() {
-    // document.querySelector("div.prompt").style.display = "none";
-}
-
 export {
-    hidePrompt,
     displayError,
     getWeekday,
     normalizeString

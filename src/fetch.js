@@ -1,24 +1,21 @@
-import { hidePrompt, displayError, getWeekday, normalizeString} from './aditional-functions'
-import { loadingAnimationOn, loadingAnimationOff } from './loading-animation';
+import { displayError, getWeekday, normalizeString} from './aditional-functions'
+import { loadingAnimationOn } from './loading-animation';
 import { createDOM } from './create-DOM'
 
+// Initialize variables
 let geolocation;
-let today;
 let city;
 let latitude;
 let longitude;
 let forecast;
 
 
-// Search input
-
+// Initialize getOn(...) when user uses search input, change placeholder if value isn't present
 function searchLocation() {
     city = document.querySelector("input.search").value;
 
     if (city != "") {
-        loadingAnimationOn();
-        getOnSearch();
-        loadingAnimationOff();
+        getOnSearchAndAppendDOM();
         document.querySelector("input.search").value = "";
     } else {
         document.querySelector("input.search").placeholder = "Type to search";
@@ -27,89 +24,82 @@ function searchLocation() {
  
 }
 
+// Initializing function to get geolocation data and run proper function
 function getLocation() {
     navigator.geolocation.getCurrentPosition(setPosition,error);
 }
 
-function error(error) {
-    switch(error.code) {
-      case error.PERMISSION_DENIED:
-        hidePrompt();
-        document.querySelector("div#locate-btn").style.display = "none";
-        locateWithIP();
-      break;
-      case error.POSITION_UNAVAILABLE:
-        hidePrompt();
-        locateWithIP();
-      break;
-      case error.TIMEOUT:
-        hidePrompt();
-        locateWithIP();
-      break;
-      case error.UNKNOWN_ERROR:
-        hidePrompt();
-        locateWithIP();
-      break;
-    }
-  }
-
+// Set current position and run fetch function
 function setPosition(position) {
     latitude = position.coords.latitude;
     longitude = position.coords.longitude;
-    hidePrompt();
     getWithGeolocation();
 }
 
-function locateWithIP() {
+// When geolocation isn't available, run fetch forecast based on IP
+function error(error) {
+    switch(error.code) {
+        case error.PERMISSION_DENIED:
+        case error.POSITION_UNAVAILABLE:
+        case error.UNKNOWN_ERROR:
+        case error.TIMEOUT:
+            fetchWithIPandCreateDom();
+            break;
+    }
+  }
+
+
+// Get forecast with IP and create DOM
+function fetchWithIPandCreateDom() {
     getForecastIP()
       .then(function(result) {
         forecast = result;
-        today = getWeekday(forecast.location.localtime.split(' ')[0]);
         createDOM(0);
-        loadingAnimationOff();
-        
       })
 }
 
+// Check geolocation, then run proper function
 function getWithGeolocation (){
   geolocation = getGeolocation()
     .then(function(result){
       geolocation = result;
-      if (geolocation.address.city == undefined && geolocation.address.village != undefined) {
-          city = normalizeString(geolocation.address.village);
-
-          getWithCity();
+      if (geolocation.address.city == undefined && geolocation.address.village != undefined) {  
+            // when geolocation returns village name instead of a city, append village name to city var
+            city = normalizeString(geolocation.address.village);
+            fetchWithCityAndCreateDom();
 
       } else if (geolocation.address.city == undefined && geolocation.address.village == undefined) {
-          locateWithIP();
+            // when gealocation doesnt return neither city nor village, locate with IP to prevent errors
+            fetchWithIPandCreateDom();
 
       } else if (geolocation.address.city != undefined && geolocation.address.village == undefined) {
-          city = normalizeString(geolocation.address.city);
+            city = normalizeString(geolocation.address.city);
 
-          getWithCity();
+            fetchWithCityAndCreateDom();
 
       } else {
-          locateWithIP();
+            //fallback for unknown cases
+            fetchWithIPandCreateDom();
       }
     
       });
 }
 
-function getWithCity() {
+
+function fetchWithCityAndCreateDom() {
     getForecast()
       .then(function(result) {
         forecast = result;
-        today = getWeekday(forecast.location.localtime.split(' ')[0]);
 
         console.log(forecast);
         createDOM(0);
 
-        loadingAnimationOff(); 
       })
 
 }
 
-function getOnSearch () {
+function getOnSearchAndAppendDOM () {
+    loadingAnimationOn();
     getForecast()
             .then(function(result) {
                 if (result != "error") {
@@ -119,10 +109,8 @@ function getOnSearch () {
                     latitude = forecast.location.lat;
                     createDOM(0);
 
-                    loadingAnimationOff();
                 } else {
                     displayError();
-                    loadingAnimationOff();
 
                 }
 
@@ -174,5 +162,4 @@ export {
     getLocation,
     searchLocation,
     forecast,
-    today
 }

@@ -1,19 +1,14 @@
 import * as css from "./style.css";
 import { getLocation, searchLocation, forecast  } from './fetch'
-import Chartkick from "chartkick"
 import "chartkick/chart.js"
 import forward from '../assets/forward.svg';
 import back from '../assets/back.svg'
-import { Colors } from 'chart.js';
 
 
-document.querySelector("img.next-day-btn").src = forward;
-document.querySelector("img.previous-day-btn").src = back;
-
+// default getLocation on window load
 getLocation();
 
-
-// Keyboard support
+// Keyboard support for search bar
 document.addEventListener('keypress', function (e) {
     if (e.key === 'Enter') {
         e.preventDefault();
@@ -23,14 +18,6 @@ document.addEventListener('keypress', function (e) {
 })
 
 
-
-// Additional functions
-
-
-Chartkick.options = {
-    colors: ["#000000"]
-
-}
-
-
-
+// Icon srcs
+document.querySelector("img.next-day-btn").src = forward;
+document.querySelector("img.previous-day-btn").src = back;

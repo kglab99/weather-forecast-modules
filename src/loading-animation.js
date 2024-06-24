@@ -1,4 +1,4 @@
-// Loading animation on/off
+// Loading animation on/off as a placeholder for fetching APIs that happen to be time consuming
 function loadingAnimationOn() {
     document.querySelector("div.container").style.display = "flex";
     document.querySelector("div#search").style.display = "none";
