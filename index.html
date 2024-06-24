@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <title>Weather</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Sen:wght@400..800&display=swap" rel="stylesheet">
@@ -41,21 +41,15 @@
         <div id="top-bar"></div>
         <div id="main"></div>
         <div id="charts">
-            <span>
-                <h2>Temperature</h2>
+            <div id="charts-menu">
+                <h2 class="temperature-btn">Temperature</h2>
+                <h2 class="wind-btn">Wind speed</h2>
+                <h2 class="rain-btn">Chance of rain</h2>
+            </div>
                 <div id="temperature" class="chart"></div>
-            </span>
-            <span>
-                <h2>Wind speed</h2>
                 <div id="wind" class="chart"></div>
-            </span>
-            <span>
-                <h2>Chance of rain</h2>
                 <div id="rain" class="chart"></div>
-            </span>
-            <span class="windy">
                 <div id="windy"></div>
-            </span>
         </div>
 
             <div id="hours"></div>

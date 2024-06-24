@@ -3,7 +3,7 @@ import { getLocation, searchLocation, forecast  } from './fetch'
 import "chartkick/chart.js"
 import forward from '../assets/forward.svg';
 import back from '../assets/back.svg'
-
+import { divRain, divWind, divTemperature, btnRain, btnTemperature, btnWind } from "./charts-menu";
 
 // default getLocation on window load
 getLocation();
@@ -16,6 +16,8 @@ document.addEventListener('keypress', function (e) {
 
     }
 })
+
+
 
 
 // Icon srcs

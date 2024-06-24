@@ -23,27 +23,31 @@ body {
 div#charts {
     width: 70vw;
     display: none;
+    flex-direction: column;
     gap: 32px;
-    justify-content: space-between;
     flex-wrap: wrap;
+    align-items: center;
+
+    div#charts-menu {
+        display: flex;
+    }
 
     div.chart {
         width: 400px;
         height: 300px;
     }
 
-    span {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    div#wind {
+      display: none;
     }
 
-    span.windy {
-        margin-top: 2.33em;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: flex-end;
+    div#rain {
+      display: none;
+    }
+
+    h2.wind-btn,
+    h2.rain-btn {
+      font-weight: 400;
     }
 
     h2 {
@@ -59,7 +63,7 @@ div#charts {
         border-radius: 10px;
         display: none;
         border-radius: 10px;
-        align-self: flex-end;
+        /* align-self: flex-end; */
     }
 }
 
