@@ -308,7 +308,7 @@ div#air-quality {
 
   div#windy {
     margin-bottom: 5vh;
-    /* margin-top: 5vh; */
+    margin-top: 5vh;
     width: 90vw;
     height: 40vh;
 
@@ -379,7 +379,7 @@ div#air-quality {
     padding: 3vh 0 3vh 0;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 
-    margin-top: 5vh;
+    /* margin-top: 5vh; */
 
     background-color: var(--tile-background);
     border-radius: 10px;
@@ -566,6 +566,7 @@ div#air-quality {
   }
 
   div#details {
+    margin-top: 5vh;
     display: flex;
     gap: 5vw;
   }
@@ -638,7 +639,7 @@ div#air-quality {
     padding: 0vh 0 3vh 0;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 
-    margin-top: 5vh;
+    /* margin-top: 5vh; */
 
     color: white;
     background-color: var(--tile-background);
