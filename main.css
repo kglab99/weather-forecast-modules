@@ -1,3 +1,7 @@
+:root {
+  --tile-background: #98c1d9;
+}
+
 
 body {
     display: flex;
@@ -243,7 +247,7 @@ div#menu {
 }
 
 div#details {
-  display: flex;
+  display: none;
   width: 90vw;
   align-items: flex-end;
   justify-content: center;
@@ -502,59 +506,155 @@ div#air-quality {
 
 @media screen and (max-width: 900px) {
 
+  body {
+    background-color: white;
+    background-image: none;
+  }
 
-    body { 
-        width: 95vw;
-        padding: 0;
-        margin: 0 auto 0 auto;
-        /* padding: 3vh 5vw 3vh 5vw; */
-        /* margin: 1vh 1vw 1vh 1vw; */
+  div#search {
+    width: 90vw;
+  }
+
+  div#menu {
+    margin-top: 2vh;
+    padding-top: 5vh;
+
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+    width: 90vw;
+    justify-content: space-between;
+
+    background-color: var(--tile-background);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+
+    img.previous-day-btn{
+      margin-left: 15vw;
     }
 
-    div#search {
-        margin-top: 2vh;
-        margin-bottom: 2vh;
-        margin-left: auto;
-        margin-right: auto;
+    img.next-day-btn {
+      margin-right: 15vw;
     }
 
-    div#menu {
-        width: 60vw;
-        justify-content: space-between;
 
-        p.day {
-            width: 30vw;
-            padding: 0;
-        }
+    p.day {
+      padding: 0;
+      width: min-content;
+    }
+  }
 
+  div#top-bar{
+    width: 90vw;
+    justify-content: center;
+
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+    background-color: var(--tile-background);
+
+    p.date {
+      display: none;
+    }
+
+    p.location {
+      font-size: 1em;
+      font-weight: 500;
+    }
+  }
+
+  div#main {
+    width: 90vw;
+
+    background-color: var(--tile-background);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     
+    padding-bottom: 3vh;
 
+    h1.current-temp {
+      margin-top: 5vh;
+      font-size: 4em;
     }
 
-    div#top-bar {
-        /* width: 90vw; */
-
+    p.current-condition {
+      font-size: 1em;
+      margin-top: -2vh;
+      
     }
 
-    div#charts {
-        flex-direction: column;
-        width: 90vw;
+    div.min-max-temp{
+      width: 70vw;
+      margin-top: -2vh;
+      margin-bottom: 3vh;
+      
+      div{
+        display: flex;
+        align-items: center;
 
-        span {
-            width: 90vw;
-            flex-direction: column;
+        img {
+          height: 30px;
+          width: 30px;
         }
 
-        div.chart {
-            width: 90vw;
-        }
+      }
+    }
+  }
 
-        div#windy {
-            width: 90vw;
-            height: 40vh;
-        }
+  div#bottom {
+    flex-direction: column;
+    width: 90vw;
 
+    border: none;
+
+    div.chart{
+      width: 80vw;
+      height: 30vh;
     }
 
+    div#charts-menu{
+      width: 90vw;
+      justify-content: space-between;
+
+      h2 {
+        font-size: 1em;
+        margin-left: 0;
+      }
+    }
+
+    div#windy {
+      margin: 0;
+      margin-top: 3vh;
+      width: 90vw;
+      height: 40vh;
+    }
+
+  }
+
+  div#details {
+    flex-direction: column;
+    width: 90vw;
+    align-items: center;
+
+    div#sun-time {
+      width: 70vw;
+
+      div#sun-chart{
+        width: 70vw;
+        height: 20vh;
+      }
+    }
+
+    div#moonphase {
+      margin-top: 2vh;
+      width: 90vw;
+    }
+
+    div#UV-container {
+      width: 90vw;
+      margin-top: 2vh;
+    }
+
+  }
 
 }
