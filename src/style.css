@@ -1,5 +1,5 @@
 :root {
-  --tile-background: #98c1d9;
+  --tile-background: #3d5a80;
 }
 
 
@@ -8,6 +8,8 @@ body {
     flex-direction: column;
     background-image: url(../assets/background.jpg);
     background-size: cover;
+
+    background-color: #e0fbfc;
 
     align-items: center;
 
@@ -507,33 +509,48 @@ div#air-quality {
 @media screen and (max-width: 900px) {
 
   body {
-    background-color: white;
+    background-color: #fdfffc;
+
     background-image: none;
   }
 
   div#search {
     width: 90vw;
+    margin-bottom: 4vh;
+    
+    input {
+      box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    }
+
+  }
+
+  div#hero {
+    background-color: var(--tile-background);
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border-radius: 10px;
+
   }
 
   div#menu {
-    margin-top: 2vh;
     padding-top: 5vh;
+    color: white;
 
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
 
     width: 90vw;
     justify-content: space-between;
 
-    background-color: var(--tile-background);
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 
     img.previous-day-btn{
       margin-left: 15vw;
+      filter: invert(1);
     }
 
     img.next-day-btn {
       margin-right: 15vw;
+      filter: invert(1);
     }
 
 
@@ -546,10 +563,9 @@ div#air-quality {
   div#top-bar{
     width: 90vw;
     justify-content: center;
+    color: white;
 
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-
-    background-color: var(--tile-background);
+    /* box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px; */
 
     p.date {
       display: none;
@@ -563,13 +579,12 @@ div#air-quality {
 
   div#main {
     width: 90vw;
+    color: white;
 
-    background-color: var(--tile-background);
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
 
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    
+
     padding-bottom: 3vh;
 
     h1.current-temp {
@@ -579,13 +594,13 @@ div#air-quality {
 
     p.current-condition {
       font-size: 1em;
-      margin-top: -2vh;
+      margin-top: -1vh;
       
     }
 
     div.min-max-temp{
       width: 70vw;
-      margin-top: -2vh;
+      margin-top: -1vh;
       margin-bottom: 3vh;
       
       div{
@@ -605,7 +620,24 @@ div#air-quality {
     flex-direction: column;
     width: 90vw;
 
+    padding: 5vh 0 5vh 0;
+
+
+    align-items: center;
+
     border: none;
+
+    div#charts {
+      width: 90vw;
+      background-color: var(--tile-background);
+
+      color: white;
+
+      border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+      padding: 5vh 0 5vh 0;
+    }
 
     div.chart{
       width: 80vw;
@@ -613,20 +645,22 @@ div#air-quality {
     }
 
     div#charts-menu{
-      width: 90vw;
+      width: 80vw;
       justify-content: space-between;
 
       h2 {
-        font-size: 1em;
+        font-size: 0.9em;
         margin-left: 0;
       }
     }
 
     div#windy {
       margin: 0;
-      margin-top: 3vh;
+      margin-top: 5vh;
       width: 90vw;
       height: 40vh;
+
+      box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     }
 
   }
@@ -635,6 +669,14 @@ div#air-quality {
     flex-direction: column;
     width: 90vw;
     align-items: center;
+
+    padding: 3vh 0 3vh 0;
+
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+    background-color: var(--tile-background);
+    border-radius: 10px;
 
     div#sun-time {
       width: 70vw;
@@ -655,6 +697,27 @@ div#air-quality {
       margin-top: 2vh;
     }
 
+  }
+
+  div#air-quality {
+    width: 90vw;
+    align-items: center;
+
+    padding: 3vh 0 3vh 0;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+    margin-top: 5vh;
+
+    color: white;
+
+    background-color: var(--tile-background);
+    border-radius: 10px;
+
+    img.air-quality {
+      border-radius: 10px;
+      height: 35vh;
+      width: 35vh;
+    }
   }
 
 }
