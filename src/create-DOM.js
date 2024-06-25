@@ -56,8 +56,8 @@ function createCharts(i) {
     // Create charts from arrays
 
     new Chartkick.LineChart("temperature", temp, {colors: ["#fff"],points: false, loading: "Loading...", suffix: "°C", empty: "No data", });
-    new Chartkick.LineChart("wind", wind, {points: false, loading: "Loading...", suffix: "km/h", empty: "No data"});
-    new Chartkick.LineChart("rain", rain, {points: false, loading: "Loading...", suffix: "%", empty: "No data"});
+    new Chartkick.LineChart("wind", wind, {colors: ["#fff"], points: false, loading: "Loading...", suffix: "km/h", empty: "No data"});
+    new Chartkick.LineChart("rain", rain, {colors: ["#fff"], points: false, loading: "Loading...", suffix: "%", empty: "No data"});
 }
 
 // Create main weather section
