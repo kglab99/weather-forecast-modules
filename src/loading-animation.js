@@ -9,7 +9,7 @@ function loadingAnimationOn() {
     document.querySelector("div#windy").style.display = "none";
     document.querySelector("div#UV-container").style.display = "none";
     document.querySelector("div#moonphase").style.display = "none";
-    // document.querySelector("div#moonphase").style.display = "none";
+    document.querySelector("div#air-quality").style.display = "none";
 
 }
 
@@ -23,6 +23,7 @@ function loadingAnimationOff() {
     document.querySelector("div#windy").style.display = "flex";
     document.querySelector("div#UV-container").style.display = "flex";
     document.querySelector("div#moonphase").style.display = "flex";
+    document.querySelector("div#air-quality").style.display = "flex";
 
 }
 

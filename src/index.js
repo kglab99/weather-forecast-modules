@@ -4,7 +4,6 @@ import "chartkick/chart.js"
 import forward from '../assets/forward.svg';
 import back from '../assets/back.svg'
 import { divRain, divWind, divTemperature, btnRain, btnTemperature, btnWind } from "./charts-menu";
-import {nextDay, previousDay} from "./menu";
 
 // default getLocation on window load
 getLocation();

@@ -283,8 +283,15 @@ div#UV-container {
       margin: 0px 0px 30px 0px;
       width: 200px;
       height: 100px;
-  }
+      
+      p.UV-description {
+        text-align: center;
+        margin-top: -15px;
+      }
+  
+    }
 }
+
 
 div#moonphase {
   width: 20vw;
@@ -306,6 +313,29 @@ div.min-max-temp {
   justify-content: space-between;
 
   width: 20vw;
+}
+
+div#air-quality {
+  display: none;
+  flex-direction: column;
+
+  h1.air-quality {
+    margin-bottom: 0;
+  }
+
+  h2.air-quality {
+    margin-top: 0;
+  }
+
+  p.air-quality {
+    margin-top: 0;
+  }
+
+  img.air-quality {
+    width: 368px;
+    height: 368px;
+  }
+
 }
 
 

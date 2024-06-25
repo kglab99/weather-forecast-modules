@@ -6,6 +6,7 @@ import "chartkick/chart.js"
 import { createUV } from './UV-index-chart';
 import {moonphaseImg} from './moonphase'
 import { createSunchart } from './sunrise-graph';
+import {createAirQuality} from './air-quality';
 
 // Main function to create all DOM elements
 function createDOM(i) {
@@ -18,6 +19,7 @@ function createDOM(i) {
     createUV(i);
     createSunchart(i);
     moonphaseImg(i);
+    createAirQuality(i);
     loadingAnimationOff();
 }
 
@@ -27,6 +29,7 @@ function clearDOM() {
     document.querySelector("div#main").innerHTML = "";
     document.querySelector("div#hours").innerHTML = "";
     document.querySelector("div#UV").innerHTML = "";
+    document.querySelector("div#air-quality").innerHTML = "";
 }
 
 // Line color for chart line
@@ -146,6 +149,7 @@ function nextDay(day) {
             createTopBar(1);
             createUV(1);
             createSunchart(1);
+            createAirQuality(1);
             currentDay = 1;
             loadingAnimationOff();
             break;
@@ -157,6 +161,7 @@ function nextDay(day) {
             createTopBar(2);
             createUV(2);
             createSunchart(2);
+            createAirQuality(2);
             currentDay = 2;
             loadingAnimationOff();
             break;
@@ -168,6 +173,7 @@ function nextDay(day) {
             createTopBar(3);
             createUV(3);
             createSunchart(3);
+            createAirQuality(3);
             currentDay = 3;
             loadingAnimationOff();
             break;
@@ -187,6 +193,7 @@ function previousDay(day) {
             createTopBar(2);
             createUV(2);
             createSunchart(2);
+            createAirQuality(2);
             currentDay = 2;
             loadingAnimationOff();
             break;
@@ -198,6 +205,7 @@ function previousDay(day) {
             createTopBar(1);
             createUV(1);
             createSunchart(1);
+            createAirQuality(1);
             currentDay = 1;
             loadingAnimationOff();
             break;
@@ -209,6 +217,7 @@ function previousDay(day) {
             createTopBar(0);
             createUV(0);
             createSunchart(0);
+            createAirQuality(0);
             currentDay = 0;
             loadingAnimationOff();
             break;
@@ -221,5 +230,5 @@ export {
     clearDOM,
     createMain,
     createTopBar,
-
+    previousDay
 }

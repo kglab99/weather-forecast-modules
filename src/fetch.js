@@ -1,6 +1,6 @@
 import { displayError, getWeekday, normalizeString} from './aditional-functions'
 import { loadingAnimationOn } from './loading-animation';
-import { createDOM } from './create-DOM'
+import { createDOM, previousDay } from './create-DOM'
 
 // Initialize variables
 let geolocation;
@@ -33,6 +33,7 @@ function getLocation() {
 function setPosition(position) {
     latitude = position.coords.latitude;
     longitude = position.coords.longitude;
+    console.log(position.coords);
     getWithGeolocation();
 }
 
@@ -106,7 +107,11 @@ function getOnSearchAndAppendDOM () {
                     forecast = result;
                     longitude =  forecast.location.lon;
                     latitude = forecast.location.lat;
-                    createDOM(0);
+                    // createDOM(0);
+                    // To switch back to today we build DOM with imported function previousDay
+                    // Its a walk around for not being able to set "current day" from create-DOM module value back to 0 
+                    // Should be fixed as its an unclear solution
+                    previousDay(1);
 
                 } else {
                     displayError();
@@ -133,7 +138,7 @@ async function getGeolocation() {
 async function getForecast() {
     try {
 
-        const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=b97a7289e4e24edbbb8101327242006&q=${city}&days=8`, {mode: 'cors'});
+        const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=b97a7289e4e24edbbb8101327242006&q=${city}&days=8&aqi=yes`, {mode: 'cors'});
         if (response.ok == true) {
             const forecast = await response.json();
             return forecast;

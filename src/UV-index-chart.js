@@ -16,8 +16,8 @@ function createUV(i) {
           value: '',
           alignToBottom: false
         },
-        from: {color: '#fb8500'},
-        to: {color: '#fb8500'},
+        from: {color: setUVColor(i)},
+        to: {color: setUVColor(i)},
         // Set default step function for all animate calls
         step: (state, bar) => {
           bar.path.setAttribute('stroke', state.color);
@@ -35,8 +35,59 @@ function createUV(i) {
       bar.text.style.fontSize = '2rem';
       
       bar.animate(forecast.forecast.forecastday[i].day.uv/1.1/10);
+
+      customizeUV();
+      addUVDescription(i);
 }
 
+function customizeUV() {
+  document.querySelector("div.progressbar-text").style.bottom = "30px";
+  document.querySelector("div#UV > svg > path:nth-child(2)").style.strokeLinecap = "round";
+}
+
+function setUVColor(i){
+    let color;
+
+      let UV = forecast.forecast.forecastday[i].day.uv;
+      if (UV > 10) {
+        color = "#ff0000";
+      } else if (UV > 7) {
+        color = "#ff5800";
+      } else if (UV > 5) {
+        color = "#ffff00";
+      } else if (UV > 2) {
+        color = "#FFD900";
+      } else if (UV > 0) {
+        color = "#00ff00"
+      }
+
+    return color;
+}
+
+function addUVDescription(i) {
+  let div = document.querySelector("div#UV");
+  let descriptionP = document.createElement("p");
+  descriptionP.className = "UV-description";
+  
+  let UV = forecast.forecast.forecastday[i].day.uv;
+  let description;
+
+    if (UV > 10) {
+      description = "Extreme";
+    } else if (UV > 7) {
+      description = "Very high";
+    } else if (UV > 5) {
+      description = "High";
+    } else if (UV > 2) {
+      description = "Moderate";
+    } else if (UV > 0) {
+      description = "Low"
+    }
+
+  descriptionP.textContent = description;
+  div.appendChild(descriptionP);
+
+}
 
 
   export {
