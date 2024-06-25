@@ -7,6 +7,9 @@ import { createUV } from './UV-index-chart';
 import {moonphaseImg} from './moonphase'
 import { createSunchart } from './sunrise-graph';
 import {createAirQuality} from './air-quality';
+import tempLow from '../assets/temperature-low.png';
+import tempHigh from '../assets/temperature-high.png';
+
 
 // Main function to create all DOM elements
 function createDOM(i) {
@@ -68,6 +71,10 @@ function createMain(i) {
 
     const divTemp = document.createElement("div");
     divTemp.classList = "min-max-temp";
+
+    const minTempImg = document.createElement("img");
+    minTempImg.classList = "min-temp";
+    minTempImg.src = tempLow;
     
     const minTemp = document.createElement("div");
     minTemp.classList = "min-temp";
@@ -79,12 +86,16 @@ function createMain(i) {
     const maxTemp = document.createElement("div");
     maxTemp.classList = "max-temp";
 
+    const maxTempImg = document.createElement("img");
+    maxTempImg.classList = "max-temp";
+    maxTempImg.src = tempHigh;
+
     const pMaxTemp = document.createElement("p");
     pMaxTemp.classList = "max-temp";
     pMaxTemp.textContent = `${forecast.forecast.forecastday[i].day.maxtemp_c}°C`
 
-    minTemp.appendChild(pMinTemp);
-    maxTemp.appendChild(pMaxTemp);
+    minTemp.append(minTempImg, pMinTemp);
+    maxTemp.append(maxTempImg, pMaxTemp);
 
     divTemp.append(minTemp, maxTemp);
 
@@ -93,7 +104,7 @@ function createMain(i) {
     condition.classList = "current-condition";
     condition.textContent = forecast.forecast.forecastday[i].day.condition.text;
 
-    main.append(h1, divTemp, condition);
+    main.append(h1, condition, divTemp);
 }
 
 // Create top bar
