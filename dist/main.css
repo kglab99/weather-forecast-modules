@@ -282,7 +282,7 @@ div#UV-container {
   align-items: center;
 
   h2 {
-    margin-bottom: 0.3em;
+    /* margin-bottom: 0.3em; */
   }
 
     div#UV {
@@ -509,7 +509,7 @@ div#air-quality {
 @media screen and (max-width: 900px) {
 
   body {
-    background-color: #fdfffc;
+    background-color: #011627;
 
     background-image: none;
   }
@@ -665,6 +665,66 @@ div#air-quality {
 
   }
 
+  div#sun-time {
+    display: none;
+    width: 90vw;
+    background-color: var(--tile-background);
+    padding: 3vh 0vw 3vh 0vw;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    color: white;
+    flex-direction: column;
+    align-items: center;
+
+    div#sun-chart{
+      width: 80vw;
+      height: 20vh;
+    }
+
+    div.subtitles {
+      width: 80vw;
+    }
+  }
+
+  div#moonphase {
+      margin-top: 5vh;
+      width: 90vw;
+
+      background-color: var(--tile-background);
+
+      color: white;
+      border-radius: 10px;
+
+      box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+      padding: 0vh 0 3vh 0;
+
+      img.moonphase {
+        margin-bottom: 0;
+      }
+
+      p.moonphase {
+        margin-top: 0;
+      }
+  }
+
+  div#UV-container {
+      width: 90vw;
+      margin-top: 5vh;
+
+      background-color: var(--tile-background);
+
+      box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+
+
+      color: white;
+      border-radius: 10px;
+
+      padding: 3vh 0 3vh 0;
+
+
+  }
+
   div#details {
     flex-direction: column;
     width: 90vw;
@@ -678,23 +738,9 @@ div#air-quality {
     background-color: var(--tile-background);
     border-radius: 10px;
 
-    div#sun-time {
-      width: 70vw;
-
-      div#sun-chart{
-        width: 70vw;
-        height: 20vh;
-      }
-    }
-
-    div#moonphase {
-      margin-top: 2vh;
-      width: 90vw;
-    }
 
     div#UV-container {
-      width: 90vw;
-      margin-top: 2vh;
+
     }
 
   }
@@ -709,9 +755,12 @@ div#air-quality {
     margin-top: 5vh;
 
     color: white;
-
     background-color: var(--tile-background);
     border-radius: 10px;
+
+    p.air-quality {
+      width: 80vw;
+    }
 
     img.air-quality {
       border-radius: 10px;

@@ -52,7 +52,7 @@ function createSunchart(i) {
     data.push([sunsetTime, sunsetPos.altitudeDegrees])
 
 
-    new Chartkick.LineChart("sun-chart", data, {library: {events: [], scales: {y: {display: false}}}, points: false});
+    new Chartkick.LineChart("sun-chart", data, {colors: ["#fff"],library: {scales: {}, events: [], scales: {y: {display: false},x: {grid: {color: "#fff"}}}}, points: false});
 
 } 
 

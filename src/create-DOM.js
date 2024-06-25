@@ -30,7 +30,6 @@ function createDOM(i) {
 function clearDOM() {
     document.querySelector("div#top-bar").innerHTML = "";
     document.querySelector("div#main").innerHTML = "";
-    document.querySelector("div#hours").innerHTML = "";
     document.querySelector("div#UV").innerHTML = "";
     document.querySelector("div#air-quality").innerHTML = "";
 }
@@ -56,7 +55,7 @@ function createCharts(i) {
 
     // Create charts from arrays
 
-    new Chartkick.LineChart("temperature", temp, {points: false, loading: "Loading...", suffix: "°C", empty: "No data", });
+    new Chartkick.LineChart("temperature", temp, {colors: ["#fff"],points: false, loading: "Loading...", suffix: "°C", empty: "No data", });
     new Chartkick.LineChart("wind", wind, {points: false, loading: "Loading...", suffix: "km/h", empty: "No data"});
     new Chartkick.LineChart("rain", rain, {points: false, loading: "Loading...", suffix: "%", empty: "No data"});
 }
