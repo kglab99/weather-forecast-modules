@@ -13,6 +13,10 @@ function loadingAnimationOn() {
   document.querySelector("div#sun-time").style.display = "none";
   // document.querySelector("div#details").style.display = "none";
   document.querySelector("div#sun-time").style.display = "none";
+  document.querySelector("div#hero").style.display = "none";
+  document.querySelector("div#bottom").style.display = "none";
+
+
 }
 
 function loadingAnimationOff() {
@@ -29,6 +33,10 @@ function loadingAnimationOff() {
   document.querySelector("div#sun-time").style.display = "flex";
   // document.querySelector("div#details").style.display = "flex";
   document.querySelector("div#sun-time").style.display = "flex";
+  document.querySelector("div#hero").style.display = "flex";
+  document.querySelector("div#bottom").style.display = "flex";
+
+
 }
 
 export { loadingAnimationOff, loadingAnimationOn };

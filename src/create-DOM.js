@@ -5,7 +5,7 @@ import Chartkick from "chartkick";
 import "chartkick/chart.js";
 import { createUV } from "./UV-index-chart";
 import { moonphaseImg } from "./moonphase";
-import { createSunchart } from "./sunrise-graph";
+import { createSunchart, createSunchart2 } from "./sunrise-graph";
 import { createAirQuality } from "./air-quality";
 import tempLow from "../assets/temperature-low.png";
 import tempHigh from "../assets/temperature-high.png";
@@ -19,9 +19,10 @@ function createDOM(i) {
   createMain(i);
   createTopBar(i);
   createUV(i);
-  createSunchart(i);
+  // createSunchart(i);
   moonphaseImg(i);
   createAirQuality(i);
+  createSunchart2();
   loadingAnimationOff();
 }
 

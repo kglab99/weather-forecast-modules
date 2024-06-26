@@ -5,6 +5,7 @@ import goodImg from "../assets/air_pollution/good-quality.jpg";
 import moderateImg from "../assets/air_pollution/moderate-quality.jpg";
 
 function createAirQuality(i) {
+  console.log(forecast);
   let defraIndex =
     forecast.forecast.forecastday[i].day.air_quality["gb-defra-index"];
   let defraDiv = document.querySelector("div#air-quality");

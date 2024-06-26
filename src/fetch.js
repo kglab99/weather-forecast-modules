@@ -151,7 +151,7 @@ async function getForecast() {
 async function getForecastIP() {
   try {
     const response = await fetch(
-      `https://api.weatherapi.com/v1/forecast.json?key=b97a7289e4e24edbbb8101327242006&q=auto:ip&days=8`,
+      `https://api.weatherapi.com/v1/forecast.json?key=b97a7289e4e24edbbb8101327242006&q=auto:ip&days=8&aqi=yes`,
       { mode: "cors" }
     );
     const forecast = await response.json();
