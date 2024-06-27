@@ -48,7 +48,7 @@ function createProgress(dayTimePercentage) {
   let bar = new ProgressBar.SemiCircle("#sun-progress", {
       strokeWidth: 4,
       color: "white",
-      trailColor: "rgba(255,255,255, 0.4)",
+      trailColor: "rgba(255,255,255, )",
       trailWidth: 4,
       easing: "easeIn",
       duration: 1,
@@ -82,8 +82,6 @@ var path = document.querySelector('div#sun-progress > svg > path:nth-child(2)')
 var obj = document.querySelector('img.sun-chart');
 
 var pathLength = Math.floor( path.getTotalLength() );
-
-moveObj(dayTimePercentage*100);
 
 // Move obj element along path based on percentage of total length
 function moveObj(prcnt)
@@ -126,6 +124,7 @@ function moveObj(prcnt)
 
 }
 
+moveObj(dayTimePercentage*100);
 
 
 }
