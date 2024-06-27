@@ -17,18 +17,16 @@ function createSunchart2(){
 
   let sunrise = sunTimes.sunriseStart.value;
   let sunset = sunTimes.sunsetEnd.value;
-  console.log(typeof sunrise);
+  console.log(sunset);
 
   let dayTime = Math.floor((sunset - sunrise)/60000);
   let dayTimeElapsed =  Math.floor((currentDateAndTime - sunrise)/60000);
   let dayTimePercentage= dayTimeElapsed/dayTime;
 
-  let sunriseTime = sunrise.toString();
-  sunriseTime = sunriseTime.split(" ")[4].split(":");
+  let sunriseTime = sunrise.toString().split(" ")[4].split(":");
   sunriseTime = `${sunriseTime[0]}:${sunriseTime[1]}`;
-  console.log(sunriseTime);
-  let sunsetTime = sunset.toString();
-  sunsetTime.split(" ")[4].split(":");
+  
+  let sunsetTime = sunset.toString().split(" ")[4].split(":");
   sunsetTime = `${sunsetTime[0]}:${sunsetTime[1]}`;
 
   document.querySelector("p.sunrise").textContent = sunriseTime;
