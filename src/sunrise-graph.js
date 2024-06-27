@@ -5,45 +5,62 @@ import { forecast } from "./fetch";
 import sun from '../assets/sun.png'
 import ProgressBar from 'progressbar.js';
 
-function createSunchart2(){
+
+
+// 
+function getSunTimesAndStartProgressBarFunction(){
+  // Asign current long/lat
   let latitude = forecast.location.lat;
   let longitude = forecast.location.lon;
-  console.log(forecast.location.localtime.replace(/-/g, "/"));
 
+  console.log(forecast);
+
+  // Format date and time fetched with API to format readable by SunCalc
+  // regex is a workaround for Safari support, which caused problems with reading dates in YYYY-MM-DD format
   const currentDateAndTime = new Date(forecast.location.localtime.replace(/-/g, "/"));
-  console.log(currentDateAndTime);
 
+  // Get suntimes
   let sunTimes = SunCalc.getSunTimes(currentDateAndTime, latitude, longitude, 0)
 
+  // Assing sunrise and sunset times
   let sunrise = sunTimes.sunriseStart.value;
   let sunset = sunTimes.sunsetEnd.value;
-  console.log(sunset);
 
+  // Calculate day lenght
   let dayTime = Math.floor((sunset - sunrise)/60000);
+
+  // Calculate time elapsed from sunrise
   let dayTimeElapsed =  Math.floor((currentDateAndTime - sunrise)/60000);
+  
+  // Calculate percentage of daylight elapsed
   let dayTimePercentage= dayTimeElapsed/dayTime;
 
+  // Format sunrise time to string for DOM assingment
   let sunriseTime = sunrise.toString().split(" ")[4].split(":");
   sunriseTime = `${sunriseTime[0]}:${sunriseTime[1]}`;
   
+  // Format sunset as above
   let sunsetTime = sunset.toString().split(" ")[4].split(":");
   sunsetTime = `${sunsetTime[0]}:${sunsetTime[1]}`;
 
+  // Assign sunset/sunrise times
   document.querySelector("p.sunrise").textContent = sunriseTime;
   document.querySelector("p.sunset").textContent = sunsetTime;
+  
+  // Replace sun img with current moon img if night detected
   let sunImg = document.querySelector("img.sun-chart");
-  console.log(dayTimePercentage);
+  
   if (dayTimePercentage < 1) {
     sunImg.src = sun;
   } else {
     sunImg.src = document.querySelector("img.moonphase").src;
 
   }
-  console.log(sunriseTime, sunsetTime)
 
-
+  // Run function creating progress bar
   createProgress(dayTimePercentage);
 }
+
 
 function createProgress(dayTimePercentage) {
   let bar = new ProgressBar.SemiCircle("#sun-progress", {
@@ -63,12 +80,17 @@ function createProgress(dayTimePercentage) {
       
     });
 
+    // 
     if (dayTimePercentage < 1) {
+      // Assign value to progress bar
       bar.animate(dayTimePercentage); // Number from 0.0 to 1.0
 
+      // Run function moving sun IMG with progress bar path
       moveSun(dayTimePercentage);
 
     } else {
+      
+      // If day is finished hardcode end values
       bar.animate(1); // Number from 0.0 to 1.0
       moveSun(1);
 
@@ -76,22 +98,20 @@ function createProgress(dayTimePercentage) {
 
 }
 
+// Set sun img position to current end of progress bar path
 function moveSun(dayTimePercentage) {
 
+const path = document.querySelector('div#sun-progress > svg > path:nth-child(2)')
+const obj = document.querySelector('img.sun-chart');
 
-var path = document.querySelector('div#sun-progress > svg > path:nth-child(2)')
-var obj = document.querySelector('img.sun-chart');
-
-var pathLength = Math.floor( path.getTotalLength() );
+const pathLength = Math.floor( path.getTotalLength() );
 
 // Move obj element along path based on percentage of total length
 function moveObj(prcnt)
 {
   prcnt = (prcnt*pathLength) / 100;
   let pt = path.getPointAtLength(prcnt);
-  console.log(prcnt);
 
-  // console.log(prcnt)
   if (prcnt < 15) {
     pt.x = (Math.round(pt.x)*2-12);
     pt.y = (Math.round(pt.y)*2);
@@ -130,7 +150,7 @@ moveObj(dayTimePercentage*100);
 
 }
 
-
+// Obsolete function, left in case it gets useful in the future
 function createSunchart(i) {
   let lat = forecast.location.lat;
   let lon = forecast.location.lon;
@@ -180,4 +200,4 @@ function createSunchart(i) {
 }
 
 
-export { createSunchart, createSunchart2 };
+export { getSunTimesAndStartProgressBarFunction };

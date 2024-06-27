@@ -5,7 +5,7 @@ import Chartkick from "chartkick";
 import "chartkick/chart.js";
 import { createUV } from "./UV-index-chart";
 import { moonphaseImg } from "./moonphase";
-import { createSunchart, createSunchart2 } from "./sunrise-graph";
+import { getSunTimesAndStartProgressBarFunction } from "./sunrise-graph";
 import { createAirQuality } from "./air-quality";
 import tempLow from "../assets/temperature-low.png";
 import tempHigh from "../assets/temperature-high.png";
@@ -22,7 +22,7 @@ function createDOM(i) {
   // createSunchart(i);
   moonphaseImg(i);
   createAirQuality(i);
-  createSunchart2();
+  getSunTimesAndStartProgressBarFunction();
   loadingAnimationOff();
 }
 
@@ -32,6 +32,11 @@ function clearDOM() {
   document.querySelector("div#main").innerHTML = "";
   document.querySelector("div#UV").innerHTML = "";
   document.querySelector("div#air-quality").innerHTML = "";
+
+  if (document.querySelector("div#sun-progress > svg") != null) {
+    document.querySelector("div#sun-progress > svg").remove();
+  }
+   // 
 }
 
 // Line color for chart line
@@ -182,7 +187,7 @@ function nextDay(day) {
       createMain(1);
       createTopBar(1);
       createUV(1);
-      createSunchart(1);
+      // createSunchart(1);
       createAirQuality(1);
       currentDay = 1;
       loadingAnimationOff();
@@ -194,7 +199,7 @@ function nextDay(day) {
       createMain(2);
       createTopBar(2);
       createUV(2);
-      createSunchart(2);
+      // createSunchart(2);
       createAirQuality(2);
       currentDay = 2;
       loadingAnimationOff();
@@ -206,7 +211,7 @@ function nextDay(day) {
       createMain(3);
       createTopBar(3);
       createUV(3);
-      createSunchart(3);
+      // createSunchart(3);
       createAirQuality(3);
       currentDay = 3;
       loadingAnimationOff();
@@ -224,7 +229,7 @@ function previousDay(day) {
       createMain(2);
       createTopBar(2);
       createUV(2);
-      createSunchart(2);
+      // createSunchart(2);
       createAirQuality(2);
       currentDay = 2;
       loadingAnimationOff();
@@ -236,7 +241,7 @@ function previousDay(day) {
       createMain(1);
       createTopBar(1);
       createUV(1);
-      createSunchart(1);
+      // createSunchart(1);
       createAirQuality(1);
       currentDay = 1;
       loadingAnimationOff();
@@ -248,8 +253,9 @@ function previousDay(day) {
       createMain(0);
       createTopBar(0);
       createUV(0);
-      createSunchart(0);
+      // createSunchart(0);
       createAirQuality(0);
+      getSunTimesAndStartProgressBarFunction();
       currentDay = 0;
       loadingAnimationOff();
       break;
