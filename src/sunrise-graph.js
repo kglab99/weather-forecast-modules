@@ -8,9 +8,9 @@ import ProgressBar from 'progressbar.js';
 function createSunchart2(){
   let latitude = forecast.location.lat;
   let longitude = forecast.location.lon;
-  console.log(forecast.location.localtime);
+  console.log(forecast.location.localtime.replace(/-/g, "/"));
 
-  const currentDateAndTime = new Date(forecast.location.localtime);
+  const currentDateAndTime = new Date(forecast.location.localtime.replace(/-/g, "/"));
   console.log(currentDateAndTime);
 
   let sunTimes = SunCalc.getSunTimes(currentDateAndTime, latitude, longitude, 0)
