@@ -30,8 +30,14 @@ function createSunchart2(){
 
   document.querySelector("p.sunrise").textContent = sunriseTime;
   document.querySelector("p.sunset").textContent = sunsetTime;
+  let sunImg = document.querySelector("img.sun-chart");
+  console.log(dayTimePercentage);
+  if (dayTimePercentage < 1) {
+    sunImg.src = sun;
+  } else {
+    sunImg.src = document.querySelector("img.moonphase").src;
 
-  document.querySelector("img.sun").src = sun;
+  }
   console.log(sunriseTime, sunsetTime)
 
 
@@ -59,12 +65,12 @@ function createProgress(dayTimePercentage) {
     if (dayTimePercentage < 1) {
       bar.animate(dayTimePercentage); // Number from 0.0 to 1.0
 
-      moveSun(dayTimePercentage*100);
+      moveSun(dayTimePercentage);
 
     } else {
       bar.animate(1); // Number from 0.0 to 1.0
-
       moveSun(1);
+
     }
 
 }
@@ -73,9 +79,11 @@ function moveSun(dayTimePercentage) {
 
 
 var path = document.querySelector('div#sun-progress > svg > path:nth-child(2)')
-var obj = document.querySelector('img.sun');
+var obj = document.querySelector('img.sun-chart');
 
 var pathLength = Math.floor( path.getTotalLength() );
+
+moveObj(dayTimePercentage*100);
 
 // Move obj element along path based on percentage of total length
 function moveObj(prcnt)
@@ -118,7 +126,6 @@ function moveObj(prcnt)
 
 }
 
-moveObj(dayTimePercentage*100);
 
 
 }
@@ -154,23 +161,23 @@ function createSunchart(i) {
   sunsetTime = `${sunsetTime[0]}:${sunsetTime[1]}`;
   data.push([sunsetTime, sunsetPos.altitudeDegrees]);
 
-  new Chartkick.LineChart("sun-chart", data, {
-    colors: ["#fff"],
-    library: {
-      scales: {},
-      events: [],
-      scales: { y: { display: false }, x: { grid: { color: "#fff" } } },
-    },
-    points: false,
-  });
+
+
+
+
+
+  // new Chartkick.LineChart("sun-chart", data, {
+  //   colors: ["#fff"],
+  //   library: {
+  //     scales: {},
+  //     events: [],
+  //     scales: { y: { display: false }, x: { grid: { color: "#fff" } } },
+  //   },
+  //   points: false,
+  // });
 
   // createSunchart2();
 }
 
-function convertTo24Hour(timeString) {
-  let date = new Date(`01/01/2022 ${timeString}`);
-  let formattedTime = date.toLocaleTimeString("en-US", { hour12: false });
-  return formattedTime;
-}
 
 export { createSunchart, createSunchart2 };

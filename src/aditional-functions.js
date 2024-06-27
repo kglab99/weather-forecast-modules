@@ -40,4 +40,11 @@ function displayError() {
   body.insertAdjacentElement("afterbegin", errorMessage);
 }
 
+function convertTo24Hour(timeString) {
+  let date = new Date(`01/01/2022 ${timeString}`);
+  let formattedTime = date.toLocaleTimeString("en-US", { hour12: false });
+  return formattedTime;
+}
+
+
 export { displayError, getWeekday, normalizeString };
