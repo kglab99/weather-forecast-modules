@@ -48,7 +48,7 @@ function createProgress(dayTimePercentage) {
   let bar = new ProgressBar.SemiCircle("#sun-progress", {
       strokeWidth: 4,
       color: "white",
-      trailColor: "rgba(255,255,255, )",
+      trailColor: "rgba(255,255,255, 0.4)",
       trailWidth: 4,
       easing: "easeIn",
       duration: 1,
